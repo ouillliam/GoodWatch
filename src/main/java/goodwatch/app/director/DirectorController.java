@@ -21,11 +21,11 @@ public class DirectorController {
         return directorService.findAllDirector();
     }
 
-    // @GetMapping("/director/{id}/movies")
-    // public ArrayList<Movie> getDirectorMovieByID(@PathVariable("id") long id){
-    //     Optional<Director> director = directorService.getDirectorById(id);
-    //     ArrayList<Movie> movies = new ArrayList<Movie>();
-    //     movies.addAll(director.get().getMovies());
-    //     return movies;
-    // }
+    @GetMapping("/director/{id}/movies")
+    public ArrayList<Movie> getDirectorMovieByID(@PathVariable("id") long id){
+        Optional<Director> director = directorService.getDirectorById(id);
+        ArrayList<Movie> movies = new ArrayList<Movie>();
+        movies.addAll(director.get().getMovies());
+        return movies;
+    }
 }

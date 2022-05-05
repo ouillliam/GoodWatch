@@ -1,5 +1,10 @@
 package goodwatch.app.movie;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -7,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -14,6 +20,8 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import goodwatch.app.director.Director;
+import goodwatch.app.genre.Genre;
+import goodwatch.app.rating.Rating;
 
 @Entity
 @Table(name = "movie")
@@ -23,21 +31,48 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long movieID;
     private String title;
+    @Column(name = "releaseyear")
     private int releaseYear;
     private String plot;
     private String poster;
     private int runtime;
 
-    private long directorID;
+    @ManyToOne
+    @JoinColumn(name = "directorID")
+    private Director director;
+
+    @ManyToMany
+    @JoinTable(name = "genremovie",
+    joinColumns = @JoinColumn(name = "movieID"),
+    inverseJoinColumns = @JoinColumn(name = "genreID"))
+    private List<Genre> genres;
+
+    @OneToMany(
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    @JoinColumn(name = "movieid", referencedColumnName = "movieid")
+    private List<Rating> ratings;
     
-    public Movie(String title, int releaseYear, String plot, String poster, int runtime, long directorID) {
+    public Movie(String title, int releaseYear, String plot, String poster, int runtime, Director director,
+            ArrayList<Genre> genres) {
         this.title = title;
         this.releaseYear = releaseYear;
         this.plot = plot;
         this.poster = poster;
         this.runtime = runtime;
-        this.directorID = directorID;
+        this.director = director;
+        this.genres = genres;
     }
+
+    // public Movie(String title, int releaseYear, String plot, String poster, int runtime, Director director) {
+    //     this.title = title;
+    //     this.releaseYear = releaseYear;
+    //     this.plot = plot;
+    //     this.poster = poster;
+    //     this.runtime = runtime;
+    //     this.director = director;
+    // }
 
     public Movie(){
         super();
@@ -83,12 +118,28 @@ public class Movie {
         this.runtime = runtime;
     }
 
-    public long getdirectorID() {
-        return directorID;
+    public Director getDirector() {
+        return director;
     }
 
-    public void setdirectorID(long directorID) {
-        this.directorID = directorID;
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(ArrayList<Genre> genres) {
+        this.genres = genres;
+    }
+
+    public float getAvgRating(){
+        float sum = 0;
+        for (Rating rating : this.ratings) {
+            sum += rating.getRating();
+        }
+        return sum / this.ratings.size();
     }
 
    

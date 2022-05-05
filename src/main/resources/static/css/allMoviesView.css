@@ -1,0 +1,19 @@
+h5.movie-card-title{
+    font-size: 0.8rem;
+}
+
+p.movie-card-director{
+    font-size: 0.7rem;
+}
+
+.movie-card-genre p{
+    font-size: 0.7rem;
+}
+
+.movie-card-genre{
+    margin-top: -0.3rem;
+}
+
+div.movie-card{
+    width: 12rem;
+}

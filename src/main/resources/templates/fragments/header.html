@@ -9,21 +9,23 @@
 </head>
 <body>
 
-    <header th:fragment="header">
-        <nav class="navbar shadow-sm navbar-expand-lg navbar-light" style="background-color: #f3c781;">
-            <a class="navbar-brand ms-5" href="">GoodWatch</a>
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class='nav-link'href="">Movies</a>
-                </li>
-                <li class="nav-item">
-                    <a class='nav-link'href="">Directors</a>
-                </li>
-                <li class="nav-item">
-                    <a class='nav-link'href="">Watched</a>
-                </li>
-            </ul>
-        </nav>
+    <header th:fragment="header" class="d-flex justify-content-center shadow-sm" style="background-color: #f3c781;">
+        <div class="w-75">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="">GoodWatch</a>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class='nav-link'href="">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class='nav-link'href="" th:href="@{/directors}">Directors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class='nav-link'href="">Watched</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
     
 </body>

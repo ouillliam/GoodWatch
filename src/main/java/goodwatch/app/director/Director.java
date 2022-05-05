@@ -28,8 +28,9 @@ public class Director {
     private long directorID;
     private String name;
 
-
-    //private List<Movie> movies;
+    @OneToMany
+    @JoinColumn(name = "directorID")
+    private List<Movie> movies;
 
     public Director(String name) {
         this.name = name;
@@ -55,12 +56,12 @@ public class Director {
         this.name = name;
     }
 
-    // public List<Movie> getMovies() {
-    //     return movies;
-    // }
+    public List<Movie> getMovies() {
+        return movies;
+    }
 
-    // public void setMovies(List<Movie> movies) {
-    //     this.movies = movies;
-    // }
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
+    }
 
 }

@@ -20,9 +20,9 @@ CREATE TABLE director(
     `name` VARCHAR(80)
 );
 
-CREATE TABLE gendra(
-    gendraID INT PRIMARY KEY AUTO_INCREMENT,
-    gendra VARCHAR(30)
+CREATE TABLE genre(
+    genreID INT PRIMARY KEY AUTO_INCREMENT,
+    genre VARCHAR(30)
 );
 
 CREATE TABLE movie(
@@ -36,11 +36,11 @@ CREATE TABLE movie(
     FOREIGN KEY (directorID) REFERENCES director(directorID) 
 );
 
-CREATE TABLE gendraMovie(
+CREATE TABLE genreMovie(
     gendraID INT,
     movieID INT,
-    PRIMARY KEY (gendraID, movieID),
-    FOREIGN KEY (gendraID) REFERENCES gendra(gendraID),
+    PRIMARY KEY (genreID, movieID),
+    FOREIGN KEY (genreID) REFERENCES genre(genreID),
     FOREIGN KEY (movieID) REFERENCES movieID(movieID)
 );
 
