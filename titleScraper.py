@@ -113,7 +113,7 @@ for m in movies_arr:
 
 logins = ["bob", 'john', "johnny", "steve", "mike", "kimberley", "chloe", "robert", "ingrid"]
 for i , login in enumerate(logins):
-    s = f"INSERT INTO user VALUES({i + 1}, \'{login}\', \'a\', \'user\');\n"
+    s = f"INSERT INTO user VALUES({i + 1}, \'{login}\', \'$2y$10$Ge5aw8PItl1XZ9pOw22duOqvoRXZJ8G3KT2mnnYXHlBqCdLvTjT8m\', \'user\');\n"
     sql_script += s
 
 for i in range(len(logins)):

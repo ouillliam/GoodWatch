@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 public interface DirectorRepository extends JpaRepository<Director, Long> {
     
-    ArrayList<Director> findAll();
+    ArrayList<Director> findAllByOrderByNameAsc();
     
     Optional<Director> findByDirectorID(Long id);
 }

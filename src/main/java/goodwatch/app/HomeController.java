@@ -1,22 +1,15 @@
 package goodwatch.app;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class HomeController {
     
-    @RequestMapping("/login")
-    public String redirectLogin(){
-        return "salut";
-    }
 
-    @RequestMapping("/hihi")
-    public String lffl(){
-        return "lofsfefsl";
-    }
-
-    @RequestMapping("/")
+    @GetMapping("/")
     public String getHome(){
         return "salut";
     }

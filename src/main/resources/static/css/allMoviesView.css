@@ -1,10 +1,20 @@
+.content{
+    width: 80%;
+}
+
 h5.movie-card-title{
     font-size: 0.8rem;
 }
 
-p.movie-card-director{
+a.movie-card-director{
     font-size: 0.7rem;
+    color: black;
+    text-decoration: none;
 }
+
+a.movie-card-director:hover{
+    color: grey;
+  }
 
 .movie-card-genre p{
     font-size: 0.7rem;
@@ -16,4 +26,35 @@ p.movie-card-director{
 
 div.movie-card{
     width: 12rem;
+}
+
+.movie-card-rating{
+    font-size: 0.6rem;
+}
+
+.movie-card-rating span{
+    font-size: 0.7rem;
+}
+
+body{
+    background-color: rgb(248, 248, 248);
+}
+
+.movie-card-btn{
+    width: fit-content;
+    font-size: 0.7rem;
+}
+
+.genres{
+    width: fit-content;
+    height: fit-content;
+    font-size: 0.7rem;
+}
+
+.genres a{
+    cursor: pointer;
+}
+
+.movies{
+    width: 80%;
 }

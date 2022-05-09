@@ -1,0 +1,39 @@
+body{
+    background-color: rgb(248, 248, 248);
+}
+
+.content{
+    width: 80%;
+}
+
+.director-list{
+    height: 1000px;
+}
+
+.director-list li{
+    list-style: none;
+    margin-right: 80px;
+}
+
+.director-list li:nth-child(2n) a{
+    color: hsl(34deg 84% 28%);
+}
+
+.director-list li:nth-child(2n) a:hover{
+    color: rgb(171, 114, 40);
+}
+
+
+.director-list a{
+    font-size: 0.7rem;
+    color: black;
+    text-decoration: none;
+}
+
+.director-list span{
+    font-size: 0.8rem;
+}
+
+.director-list a:hover{
+    color: grey;
+  }

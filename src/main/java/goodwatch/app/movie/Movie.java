@@ -1,7 +1,10 @@
 package goodwatch.app.movie;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -134,12 +137,15 @@ public class Movie {
         this.genres = genres;
     }
 
-    public float getAvgRating(){
-        float sum = 0;
+    public String getAvgRating(){
+        double sum = 0;
         for (Rating rating : this.ratings) {
             sum += rating.getRating();
         }
-        return sum / this.ratings.size();
+        double avg = sum / this.ratings.size();
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ENGLISH));
+        return df.format(avg);
     }
 
    

@@ -13,7 +13,7 @@ public class DirectorService {
     DirectorRepository directorRepository;
 
     public ArrayList<Director> findAllDirector(){
-        return directorRepository.findAll();
+        return directorRepository.findAllByOrderByNameAsc();
     }
 
     public Optional<Director> getDirectorById(long id){

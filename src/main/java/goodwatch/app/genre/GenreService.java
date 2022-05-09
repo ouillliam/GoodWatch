@@ -13,7 +13,7 @@ public class GenreService {
     GenreRepository genreRepository;
 
     public ArrayList<Genre> findAllGenre(){
-        return genreRepository.findAll();
+        return genreRepository.findAllByOrderByLabelAsc();
     }
 
     public Optional<Genre> getGenreById(Long id){

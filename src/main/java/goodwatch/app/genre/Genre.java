@@ -62,4 +62,12 @@ public class Genre {
         this.movies = movies;
     }
 
+    public long getGenreID() {
+        return genreID;
+    }
+
+    public void setGenreID(long genreID) {
+        this.genreID = genreID;
+    }
+
 }

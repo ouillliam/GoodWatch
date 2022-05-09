@@ -10,7 +10,7 @@ drop table if exists gendramovie;
 CREATE TABLE `user`(
     userID INT PRIMARY KEY AUTO_INCREMENT,
     `login` VARCHAR(20),
-    `password` VARCHAR(20),
+    `password` VARCHAR(60),
     `role` VARCHAR(10),
     CONSTRAINT CHK_USER_ROLE CHECK( `role` IN ("user", "admin"))
 );
