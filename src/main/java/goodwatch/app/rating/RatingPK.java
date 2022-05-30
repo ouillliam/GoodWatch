@@ -43,4 +43,20 @@ public class RatingPK implements Serializable {
             return false;
         return true;
     }
+
+    public long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(long userID) {
+        this.userID = userID;
+    }
+
+    public long getMovieID() {
+        return movieID;
+    }
+
+    public void setMovieID(long movieID) {
+        this.movieID = movieID;
+    }
 }

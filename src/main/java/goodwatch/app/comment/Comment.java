@@ -1,52 +1,42 @@
-package goodwatch.app.rating;
+package goodwatch.app.comment;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 import goodwatch.app.movie.Movie;
 import goodwatch.app.user.User;
 
 @Entity
-@Table(name = "rating")
-public class Rating {
+@Table(name = "comment")
+public class Comment {
     
-    @EmbeddedId
-    private RatingPK id = new RatingPK();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long commentID;
 
     @ManyToOne
-    @MapsId("userID")
     @JoinColumn(name = "userID")
     private User user;
 
     @ManyToOne
-    @MapsId("movieID")
     @JoinColumn(name = "movieID")
     private Movie movie;
 
-    @Column(name = "rating")
-    private int rating;
+    private String content;
 
-    public Rating() {
-    }
-
-    public Rating(User user, Movie movie, int rating) {
+    public Comment(User user, Movie movie, String content) {
         this.user = user;
         this.movie = movie;
-        this.rating = rating;
+        this.content = content;
     }
 
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
+    public Comment() {
+        super();
     }
 
     public User getUser() {
@@ -63,6 +53,13 @@ public class Rating {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
-    } 
+    }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 }

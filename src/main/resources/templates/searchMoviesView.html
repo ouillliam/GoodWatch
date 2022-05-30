@@ -13,7 +13,7 @@
 
     <div layout:fragment="content">
       
-        <h1>Movies</h1>
+        <h1 th:text="${'Results for : ' + search}">Search</h1>
         <div class="d-flex" th:fragment="movies">
             <div class="movies">
               <div class="d-flex flex-wrap">

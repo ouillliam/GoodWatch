@@ -1,5 +1,6 @@
 package goodwatch.app.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -14,6 +15,10 @@ import goodwatch.app.user.UserDetailsServiceImp;
 
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+
+
+    @Autowired
+    LoginSuccessHandler loginSuccessHandler;
     
     @Bean 
     public UserDetailsService userDetailsService(){
@@ -43,11 +48,20 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
             .antMatchers("/movies").hasRole("user")
+            .antMatchers("/movie/{id}").hasRole("user")
+            .antMatchers("/movie/search").hasRole("user")
             .antMatchers("/directors").hasRole("user")
             .antMatchers("/director/{id}/movies").hasRole("user")
             .antMatchers("/genre/{id}/movies").hasRole("user")
+            .antMatchers("/comment").hasRole("user")
+            .antMatchers("/user/addMovie/{id}").hasRole("user")
+            .antMatchers("/user/removeMovie/{id}").hasRole("user")
+            .antMatchers("/user/watched").hasRole("user")
+            .antMatchers("/admin/**").hasRole("admin")
             .and()
             .formLogin()
+            .successHandler(loginSuccessHandler)
+            .permitAll()
             .and()
             .logout().permitAll();
     }

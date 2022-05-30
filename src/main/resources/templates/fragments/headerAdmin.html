@@ -16,20 +16,15 @@
                 <a class="navbar-brand" href="">GoodWatch</a>
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class='nav-link'href="" th:href="@{/movies}">Movies</a>
+                        <a class='nav-link'href="" th:href="@{/admin/movies}">Movies</a>
                     </li>
                     <li class="nav-item">
-                        <a class='nav-link'href="" th:href="@{/directors}">Directors</a>
+                        <a class='nav-link'href="" th:href="@{/admin/directors}">Directors</a>
                     </li>
                     <li class="nav-item">
-                        <a class='nav-link'href="" th:href="@{/user/watched}">Watched</a>
+                        <a class='nav-link'href="" th:href="@{/admin/users}">Users</a>
                     </li>
                 </ul>
-
-                <form class="d-flex me-4" role="search" th:action="@{/movies/search}" method="get">
-                    <input class="form-control me-2" type="search" th:name="search" th:value="${search}" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
 
                 <form th:action="@{/logout}" method="post" style="justify-self: end;">
                     <input type="submit" class="btn btn-outline-secondary" value="Logout" style="font-size: 0.7rem;"/>

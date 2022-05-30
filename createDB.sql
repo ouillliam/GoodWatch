@@ -56,7 +56,7 @@ CREATE TABLE comment(
     commentID INT PRIMARY KEY AUTO_INCREMENT,
     userID INT,
     movieID INT,
-    content VARCHAR(500),
+    content VARCHAR(2000),
     FOREIGN KEY (userID) REFERENCES user(userID),
     FOREIGN KEY (movieID) REFERENCES movie(movieID)
 );

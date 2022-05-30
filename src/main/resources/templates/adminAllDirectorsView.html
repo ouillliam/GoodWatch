@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{layouts/layout}">
+<html layout:decorate="~{layouts/layoutAdmin}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,12 +12,25 @@
 <body>
 
     <div layout:fragment="content">
+
+        <h1>Add Director</h1>
+        <form action="" th:action="@{/admin/addDirector}" th:object="${directorForm}" class="d-flex flex-column w-50" method="post">
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Name</span>
+            </div>
+            <input type="text" th:field="*{name}" class="form-control">
+          </div>
+          <input type="submit" class="btn btn-primary pe-2 ps-2" value="Add director">
+
+        </form>
       
         <h1>Directors</h1>
         <div class="d-flex">
             <div class="directors">
               
-                <ul class="director-list d-flex flex-column flex-wrap">
+                <ul class="director-list admin d-flex flex-column flex-wrap">
                     <li th:each="director : ${directors}" class="mb-1 shadow-sm">
                         <a href="" class="d-flex justify-content-between" th:href="@{${'/director/' + director.directorID + '/movies'}}">
                             <span th:text="${director.name}" class="director-name">Director</span>
@@ -25,6 +38,7 @@
                                 <span th:text="${director.movies.size()}" class="ms-3">Number of movies</span> movies
                             </div>
                         </a>
+                        <a href="#" th:href="@{${'/admin/deleteDirector/' + director.directorID}}" class="btn btn-danger mt-3">Delete</a>
                     </li>
                 </ul>
       

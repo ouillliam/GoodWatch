@@ -4,14 +4,18 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import goodwatch.app.movie.Movie;
 import goodwatch.app.rating.Rating;
 
 @Entity
@@ -31,6 +35,12 @@ public class User {
     )
     @JoinColumn(name = "userid", referencedColumnName = "userid")
     private List<Rating> ratings;
+
+    @ManyToMany
+    @JoinTable(name = "usermovie",
+    joinColumns = @JoinColumn(name = "userID"),
+    inverseJoinColumns = @JoinColumn(name = "movieID"))
+    private List<Movie> movies;
 
     public User() {
     }
@@ -65,6 +75,22 @@ public class User {
 
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
+    }
+
+    public long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(long userID) {
+        this.userID = userID;
+    }
+
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
     }
     
 

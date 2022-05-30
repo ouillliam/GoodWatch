@@ -19,4 +19,12 @@ public class DirectorService {
     public Optional<Director> getDirectorById(long id){
         return directorRepository.findByDirectorID(id);
     }
+
+    public void saveDirector(Director director){
+        directorRepository.save(director);
+    }
+
+    public void deleteDirector(long directorID){
+        directorRepository.deleteById(directorID);
+    }
 }

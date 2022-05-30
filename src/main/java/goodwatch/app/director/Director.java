@@ -2,6 +2,7 @@ package goodwatch.app.director;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,8 +29,8 @@ public class Director {
     private long directorID;
     private String name;
 
-    @OneToMany
-    @JoinColumn(name = "directorID")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "director")
+    //@JoinColumn(name = "directorID")
     private List<Movie> movies;
 
     public Director(String name) {

@@ -16,15 +16,13 @@ a.card-title-link:hover{
     color: grey;
 }
 
-a.movie-card-director{
+.movie-card-director{
     font-size: 0.7rem;
     color: black;
     text-decoration: none;
 }
 
-a.movie-card-director:hover{
-    color: grey;
-  }
+
 
 .movie-card-genre p{
     font-size: 0.7rem;
@@ -67,5 +65,5 @@ body{
 }
 
 .movies{
-    width: 80%;
+    width: 100%;
 }

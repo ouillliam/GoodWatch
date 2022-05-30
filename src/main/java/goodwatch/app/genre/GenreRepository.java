@@ -13,4 +13,7 @@ public interface GenreRepository extends PagingAndSortingRepository<Genre, Long>
     ArrayList<Genre> findAllByOrderByLabelAsc();
 
     Optional<Genre> findByGenreID(Long id);
+
+    Genre findByLabel(String label);
+
 }
